@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Shopping</title>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <Div id="app">
+            <header>
+                <h1 v-text="sitename"></h1>
+            </header>
+            <main>
+                <figure>
+                    <img v-bind:src="product.image">
+                </figure>
+                <h2 v-text="product.title"></h2>
+                <p v-html="product.description"></p>
+                <p>Price: {{product.price}}</p>
+                <input type="button" value="add" @click="addToCart">
+            </main>
+        </Div>
+        <script type="text/javascript">
+        var webstore= new Vue({
+            el: "#app",
+            data:{
+                sitename: "Vue.js Fruits and Veggies Shop",
+                product: {
+                    id: 1001,
+                    title: "Fruits and Vegetables",
+                    description: "A bag of <em>irresistible</em>," + "organic goodness for you.",
+                    price: 2000,
+                    image: "images/fandv.jpg"
+                        },
+                cart: [],
+            },
+            methods:{
+                addToCart: function() {
+                    console.log("before");
+                    this.cart.push(this.product.id);
+                }
+            }
+        });</script>
+    </body>
+</html>
